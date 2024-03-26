@@ -1,0 +1,3 @@
+php artisan make:event OrderPayment
+
+php artisan make:listener SendEmailAfterOderPayment --event="OrderPayment"

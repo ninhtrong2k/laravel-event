@@ -24,7 +24,7 @@ Route::get('/order/cerate', function () {
     $order->note= 'Call phone';
     $order->save();
     /// dispatch event
-    // OrderPayment::dispatch($order);
+    OrderPayment::dispatch($order);
     // event(new  OrderPayment($order));
 });
 

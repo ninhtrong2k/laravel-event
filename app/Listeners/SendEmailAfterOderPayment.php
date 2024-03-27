@@ -27,6 +27,23 @@ class SendEmailAfterOderPayment
     public function handle(OrderPayment $event)
     {
         //
-        return false;
-    }
+        // return false;
+        /// Xử lsy logic email
+        //Amount
+        $amount = $event->order->amount;
+        $note = $event->order->note;
+        $content = "note  $amount $note";
+
+        dd($event->order);
+
+        $filePath = './data.txt';
+        // Kiểm tra xem thư mục 'data' có tồn tại không, nếu không thì tạo mới
+        $directory = dirname($filePath);
+        if (!is_dir($directory)) {
+            mkdir($directory, 0755, true);
+        }
+    
+        // Ghi nội dung vào tệp
+        file_put_contents($filePath, $content);    }
+
 }

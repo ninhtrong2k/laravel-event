@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\Order;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -19,9 +20,11 @@ class OrderPayment
      *
      * @return void
      */
-    public function __construct()
+    public $order;
+    public function __construct(Order $order)
     {
         //
+        $this->order = $order;
     }
 
     /**

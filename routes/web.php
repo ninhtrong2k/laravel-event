@@ -1,5 +1,7 @@
 <?php
 
+use App\Events\OrderPayment;
+use App\Models\Order;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/order/cerate', function () {
+    $order = new Order;
+    $order->amount = 12000;
+    $order->note= 'Call phone';
+    $order->save();
+    /// dispatch event
+    // OrderPayment::dispatch($order);
+    // event(new  OrderPayment($order));
+});
+

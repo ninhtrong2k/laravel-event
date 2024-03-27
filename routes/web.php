@@ -2,8 +2,8 @@
 
 use App\Events\OrderPayment;
 use App\Models\Order;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,3 +28,10 @@ Route::get('/order/cerate', function () {
     // event(new  OrderPayment($order));
 });
 
+Route::get('/users/create', function () {
+   $user = new User();
+   $user->name = 'Hoang An';
+   $user->email = 'trongyb6@gmail.com';
+   $user->password = Hash::make('123456');
+   $user->save();
+});
